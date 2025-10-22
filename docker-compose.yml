@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Serviço do Backend (API)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: isp_backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - isp-network
+
+  # Serviço do Frontend (Web App)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: isp_frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80" # Expõe o Nginx na porta 8080 do host
+    networks:
+      - isp-network
+
+  # Serviço do Banco de Dados (PostgreSQL)
+  db:
+    image: postgres:15-alpine
+    container_name: isp_postgres_db
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - isp-network
+
+networks:
+  isp-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+
