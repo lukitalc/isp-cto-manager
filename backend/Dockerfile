@@ -1,4 +1,4 @@
-'''# Stage 1: Build the application
+# Stage 1: Build the application
 FROM node:20-alpine AS builder
 
 WORKDIR /usr/src/app
@@ -31,4 +31,3 @@ EXPOSE 3000
 
 # Comando para iniciar a aplicação
 CMD [ "node", "dist/main" ]
-'''

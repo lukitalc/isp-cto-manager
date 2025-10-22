@@ -1,4 +1,4 @@
-'''# Stage 1: Build the React application
+# Stage 1: Build the React application
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -31,4 +31,3 @@ EXPOSE 80
 
 # Comando para iniciar o Nginx
 CMD [ "nginx", "-g", "daemon off;" ]
-'''
