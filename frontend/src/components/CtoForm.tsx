@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Cto } from '../services/api';
+import type { Cto } from '../services/api';
 
 interface CtoFormProps {
   cto?: Cto;

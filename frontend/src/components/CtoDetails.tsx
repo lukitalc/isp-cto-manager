@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Cto, PortsStatusResponse, clientConnectionsApi } from '../services/api';
+import { clientConnectionsApi } from '../services/api';
+import type { Cto, PortsStatusResponse } from '../services/api';
 
 interface CtoDetailsProps {
   cto: Cto;

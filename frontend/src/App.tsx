@@ -3,7 +3,8 @@ import MapView from './components/MapView';
 import CtoForm, { CtoFormData } from './components/CtoForm';
 import CtoDetails from './components/CtoDetails';
 import ConnectClientModal from './components/ConnectClientModal';
-import { ctosApi, clientConnectionsApi, OccupancyStats, Cto } from './services/api';
+import { ctosApi, clientConnectionsApi } from './services/api';
+import type { OccupancyStats, Cto } from './services/api';
 
 type View = 'map' | 'add-cto' | 'edit-cto' | 'search';
 
