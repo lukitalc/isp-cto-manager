@@ -9,24 +9,24 @@ async function bootstrap() {
   const corsOrigin = process.env.CORS_ORIGIN;
   console.log('🔒 CORS_ORIGIN env:', corsOrigin);
   
+  // Lista de origens permitidas
+  const allowedOrigins = [
+    'http://localhost:3001',
+    'http://localhost:19006',
+    'https://inventario-cto-cliente.up.railway.app',
+    'https://fearless-gratitude-production.up.railway.app',
+  ];
+  
+  // Se CORS_ORIGIN estiver definido, adiciona à lista
+  if (corsOrigin) {
+    const origins = corsOrigin.split(',').map(o => o.trim());
+    allowedOrigins.push(...origins);
+  }
+  
   // Habilitar CORS para permitir acesso do frontend
   app.enableCors({
     origin: (origin, callback) => {
       console.log('🌐 Request from origin:', origin);
-      
-      // Lista de origens permitidas
-      const allowedOrigins = [
-        'http://localhost:3001',
-        'http://localhost:19006',
-        'https://inventario-cto-cliente.up.railway.app',
-        'https://fearless-gratitude-production.up.railway.app',
-      ];
-      
-      // Se CORS_ORIGIN estiver definido, adiciona à lista
-      if (corsOrigin) {
-        const origins = corsOrigin.split(',').map(o => o.trim());
-        allowedOrigins.push(...origins);
-      }
       
       // Permite se a origem estiver na lista OU se não houver origem (requisições diretas)
       if (!origin || allowedOrigins.includes(origin)) {
