@@ -1,10 +1,23 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+// Detecta a URL da API baseado no ambiente
+const getApiBaseUrl = (): string => {
+  // Se estiver em desenvolvimento local
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'http://localhost:3000';
+  }
+  
+  // Se estiver em produção, usa a variável de ambiente ou a URL do backend
+  // Railway: https://isp-cto-manager-production.up.railway.app
+  return import.meta.env.VITE_API_URL || 'https://isp-cto-manager-production.up.railway.app';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 // Debug: Log da URL da API
 console.log('🔗 API Base URL:', API_BASE_URL);
 console.log('🔗 VITE_API_URL:', import.meta.env.VITE_API_URL);
+console.log('🔗 Window location:', window.location.hostname);
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
