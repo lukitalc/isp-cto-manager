@@ -108,7 +108,6 @@ export default function CtoDetails({ cto, onClose, onConnectClient, onDisconnect
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span style={{
-                      display: 'inline-block',
                       width: '32px',
                       height: '32px',
                       borderRadius: '50%',

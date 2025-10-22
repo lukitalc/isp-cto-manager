@@ -77,7 +77,7 @@ export default function CtoForm({ cto, onSubmit, onCancel }: CtoFormProps) {
             longitude: position.coords.longitude,
           });
         },
-        (error) => {
+        () => {
           setError('Não foi possível obter a localização atual');
         }
       );

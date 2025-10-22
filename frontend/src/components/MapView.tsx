@@ -57,7 +57,6 @@ const getMarkerIcon = (occupancyLevel: 'low' | 'medium' | 'high') => {
 interface MapViewProps {
   ctos: OccupancyStats[];
   onCtoClick?: (cto: OccupancyStats) => void;
-  selectedCtoId?: string;
 }
 
 // Componente para ajustar o centro do mapa
@@ -76,7 +75,7 @@ function MapController({ ctos }: { ctos: OccupancyStats[] }) {
   return null;
 }
 
-export default function MapView({ ctos, onCtoClick, selectedCtoId }: MapViewProps) {
+export default function MapView({ ctos, onCtoClick }: MapViewProps) {
   const [center] = useState<[number, number]>([-23.550520, -46.633308]); // São Paulo como padrão
 
   return (

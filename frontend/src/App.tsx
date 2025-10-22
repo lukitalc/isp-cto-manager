@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import MapView from './components/MapView';
-import CtoForm, { CtoFormData } from './components/CtoForm';
+import CtoForm from './components/CtoForm';
+import type { CtoFormData } from './components/CtoForm';
 import CtoDetails from './components/CtoDetails';
 import ConnectClientModal from './components/ConnectClientModal';
 import { ctosApi, clientConnectionsApi } from './services/api';
