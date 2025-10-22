@@ -82,7 +82,7 @@ export default function CtoDetails({ cto, onClose, onConnectClient, onDisconnect
               </>
             )}
             <p style={{ margin: '4px 0' }}>
-              <strong>Coordenadas:</strong> {cto.latitude.toFixed(6)}, {cto.longitude.toFixed(6)}
+              <strong>Coordenadas:</strong> {Number(cto.latitude).toFixed(6)}, {Number(cto.longitude).toFixed(6)}
             </p>
           </div>
         </div>
