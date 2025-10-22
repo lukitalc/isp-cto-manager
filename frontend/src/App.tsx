@@ -194,7 +194,6 @@ function App() {
               <MapView
                 ctos={ctos}
                 onCtoClick={handleCtoClick}
-                selectedCtoId={selectedCto?.id}
               />
             )}
             {selectedCto && (
